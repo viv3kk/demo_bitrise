@@ -1,17 +1,14 @@
-/**
- * @format
- */
-
-import 'react-native';
+// __tests__/App.test.tsx
 import React from 'react';
+import { render } from '@testing-library/react-native';
 import App from '../App';
 
-// Note: import explicitly to use the types shipped with jest.
-import {it} from '@jest/globals';
-
-// Note: test renderer must be required after react-native.
-import renderer from 'react-test-renderer';
-
-it('renders correctly', () => {
-  renderer.create(<App />);
+describe('App Component', () => {
+  it('renders the welcome text', () => {
+    // Render the App component
+    const { getByText } = render(<App />);
+    
+    // Check if "Hello, React Native!" text is in the document
+    expect(getByText('Hello, React Native!')).toBeTruthy();
+  });
 });
